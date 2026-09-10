@@ -1,0 +1,146 @@
+// Prisma schema for the property management SaaS
+// docs: https://www.prisma.io/docs
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+// ---------- BILLING / TENANCY (the SaaS org, not the renter) ----------
+
+model Organization {
+  id            String   @id @default(cuid())
+  name          String
+  stripeCustomerId String? @unique
+  subscriptionTier String  @default("FREE") // FREE, STARTER, GROWTH, SCALE
+  createdAt     DateTime @default(now())
+
+  // Manual bank-transfer plan request (alternative to card checkout).
+  pendingPlanRequest    String?   // tier name being requested, e.g. "STARTER"
+  pendingPlanReference  String?   @unique // short code the payer includes in the transfer
+  pendingPlanRequestedAt DateTime?
+
+  users         User[]
+  properties    Property[]
+}
+
+model User {
+  id             String       @id @default(cuid())
+  email          String       @unique
+  name           String?
+  role           Role         @default(MANAGER)
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  organizationId String
+  createdAt      DateTime     @default(now())
+}
+
+enum Role {
+  OWNER
+  MANAGER
+  STAFF
+}
+
+// ---------- CORE DOMAIN ----------
+
+model Property {
+  id             String       @id @default(cuid())
+  organization   Organization @relation(fields: [organizationId], references: [id])
+  organizationId String
+  name           String
+  addressLine1   String
+  city           String
+  state          String
+  postalCode     String
+  archived       Boolean      @default(false) // hidden from active lists, but history is preserved
+  units          Unit[]
+  createdAt      DateTime     @default(now())
+
+  @@index([organizationId])
+}
+
+model Unit {
+  id           String    @id @default(cuid())
+  property     Property  @relation(fields: [propertyId], references: [id])
+  propertyId   String
+  label        String    // e.g. "Unit 2B"
+  bedrooms     Int       @default(1)
+  bathrooms    Float     @default(1)
+  monthlyRent  Decimal   @db.Decimal(10, 2)
+  archived     Boolean   @default(false) // hidden from active lists, but history is preserved
+  tenants      Tenant[]
+  maintenance  MaintenanceRequest[]
+
+  @@index([propertyId])
+}
+
+model Tenant {
+  id                    String    @id @default(cuid())
+  unit                  Unit      @relation(fields: [unitId], references: [id])
+  unitId                String
+  fullName              String
+  email                 String?   @unique // also used as their portal login
+  phone                 String?
+  clerkUserId           String?   @unique // set once they accept their portal invite
+  leaseStart            DateTime
+  leaseEnd              DateTime?
+  active                Boolean   @default(true)
+  leaseReminderSentAt   DateTime? // prevents re-sending the lease-expiry email every day
+  payments              RentPayment[]
+  maintenance           MaintenanceRequest[]
+
+  @@index([unitId])
+}
+
+model RentPayment {
+  id                 String        @id @default(cuid())
+  tenant             Tenant        @relation(fields: [tenantId], references: [id])
+  tenantId           String
+  amount             Decimal       @db.Decimal(10, 2)
+  dueDate            DateTime
+  paidDate           DateTime?
+  status             PaymentStatus @default(PENDING)
+  lateReminderSentAt DateTime?     // prevents re-sending the overdue email every day
+  createdAt          DateTime      @default(now())
+
+  @@index([tenantId])
+}
+
+enum PaymentStatus {
+  PENDING
+  PAID
+  LATE
+  PARTIAL
+}
+
+model MaintenanceRequest {
+  id          String            @id @default(cuid())
+  unit        Unit              @relation(fields: [unitId], references: [id])
+  unitId      String
+  tenant      Tenant?           @relation(fields: [tenantId], references: [id])
+  tenantId    String?
+  title       String
+  description String
+  status      MaintenanceStatus @default(OPEN)
+  submittedBy SubmitterType     @default(STAFF)
+  photoUrls   String[]          @default([])
+  createdAt   DateTime          @default(now())
+  resolvedAt  DateTime?
+
+  @@index([unitId])
+}
+
+enum SubmitterType {
+  STAFF
+  TENANT
+}
+
+enum MaintenanceStatus {
+  OPEN
+  IN_PROGRESS
+  DONE
+  CANCELLED
+}
