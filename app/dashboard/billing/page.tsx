@@ -7,9 +7,9 @@ import { CheckCircle2, CreditCard, Sparkles, Clock } from "lucide-react";
 
 const PLANS = [
   { name: "FREE" as const, label: "Free", maxProperties: "2", price: "RM0/mo" },
-  { name: "STARTER" as const, label: "Starter", maxProperties: "10", price: "RM29/mo" },
-  { name: "GROWTH" as const, label: "Growth", maxProperties: "50", price: "RM79/mo" },
-  { name: "SCALE" as const, label: "Scale", maxProperties: "Unlimited", price: "RM199/mo" },
+  { name: "STARTER" as const, label: "Basic", maxProperties: "10", price: "RM29/mo" },
+  { name: "GROWTH" as const, label: "Standard", maxProperties: "50", price: "RM59/mo" },
+  { name: "SCALE" as const, label: "Premium", maxProperties: "Unlimited", price: "RM100/mo" },
 ];
 
 export default async function BillingPage({

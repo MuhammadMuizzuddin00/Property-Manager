@@ -11,10 +11,10 @@ export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 // subscribes to (via Stripe Checkout + webhook) — maxProperties here is
 // only used to ENFORCE a limit, not to auto-pick a tier by property count.
 export const TIERS = [
-  { name: "FREE", maxProperties: 2, priceId: null },
-  { name: "STARTER", maxProperties: 10, priceId: "price_xxx_starter" },
-  { name: "GROWTH", maxProperties: 50, priceId: "price_xxx_growth" },
-  { name: "SCALE", maxProperties: Infinity, priceId: "price_xxx_scale" },
+  { name: "FREE", maxProperties: 3, priceId: null },
+  { name: "Basic", maxProperties: 10, priceId: "price_1UEi46P1LVFMTEThz8MAD37S" },
+  { name: "Standard", maxProperties: 50, priceId: "price_1UEi3dP1LVFMTEThmM2weIqB" },
+  { name: "Premium", maxProperties: Infinity, priceId: "price_1UEhsaP1LVFMTETh6Tw2XQ5G" },
 ] as const;
 
 export function tierForPropertyCount(count: number) {

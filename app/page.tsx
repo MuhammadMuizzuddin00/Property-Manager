@@ -35,9 +35,9 @@ const FEATURES = [
 
 const PLANS = [
   { name: "Free", price: "RM0/mo", maxProperties: "2" },
-  { name: "Starter", price: "RM29/mo", maxProperties: "10" },
-  { name: "Growth", price: "RM79/mo", maxProperties: "50" },
-  { name: "Scale", price: "RM199/mo", maxProperties: "Unlimited" },
+  { name: "Basic", price: "RM29/mo", maxProperties: "10" },
+  { name: "Standard", price: "RM59/mo", maxProperties: "50" },
+  { name: "Premium", price: "RM100/mo", maxProperties: "Unlimited" },
 ];
 
 export default function Home() {
