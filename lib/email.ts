@@ -72,6 +72,9 @@ export async function sendBankTransferRequestEmail(params: {
     return { sent: false as const };
   }
 
+  const appUrl = process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000";
+  const approveUrl = `${appUrl}/admin/requests`;
+
   return sendEmail(
     adminEmail,
     `New bank transfer request — ${params.organizationName} (${params.tierName})`,
@@ -79,7 +82,7 @@ export async function sendBankTransferRequestEmail(params: {
      <p>Requested by: ${params.requesterEmail}</p>
      <p>Plan: <strong>${params.tierName}</strong></p>
      <p>Reference code: <strong>${params.reference}</strong></p>
-     <p>Once you've confirmed the transfer in your bank account, approve this
-     request from /admin/requests.</p>`
+     <p>Once you've confirmed the transfer in your bank account, approve it here:</p>
+     <p><a href="${approveUrl}">${approveUrl}</a></p>`
   );
 }

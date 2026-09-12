@@ -10,6 +10,7 @@ import {
   Wrench,
   UserPlus,
   CreditCard,
+  ShieldCheck,
 } from "lucide-react";
 
 const NAV_ITEMS = [
@@ -22,12 +23,21 @@ const NAV_ITEMS = [
   { href: "/dashboard/billing", label: "Billing", icon: CreditCard },
 ];
 
-export default function SidebarNav({ onNavigate }: { onNavigate?: () => void }) {
+export default function SidebarNav({
+  onNavigate,
+  isAdmin,
+}: {
+  onNavigate?: () => void;
+  isAdmin?: boolean;
+}) {
   const pathname = usePathname();
+  const items = isAdmin
+    ? [...NAV_ITEMS, { href: "/admin/requests", label: "Admin", icon: ShieldCheck }]
+    : NAV_ITEMS;
 
   return (
     <ul className="space-y-0.5 text-sm">
-      {NAV_ITEMS.map(({ href, label, icon: Icon }) => {
+      {items.map(({ href, label, icon: Icon }) => {
         const isActive = href === "/dashboard" ? pathname === href : pathname.startsWith(href);
         return (
           <li key={href}>
