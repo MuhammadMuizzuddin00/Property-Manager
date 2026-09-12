@@ -9,11 +9,11 @@ export default function PrivacyPage() {
         ← Back
       </Link>
       <h1 className="font-display mt-4 text-3xl font-medium text-gray-900">Privacy Policy</h1>
-      <p className="mt-2 text-sm text-gray-500">Last updated: [insert date]</p>
+      <p className="mt-2 text-sm text-gray-500">Last updated: 12 September 2026</p>
 
       <div className="mt-8 space-y-6 text-sm leading-relaxed text-gray-700">
         <p>
-          This Privacy Policy explains how PropMan (&quot;we&quot;, &quot;us&quot;) collects,
+          This Privacy Policy explains how PropMan, operated by Ruang Kita (&quot;we&quot;, &quot;us&quot;), collects,
           uses, and protects personal data, in line with Malaysia&apos;s Personal Data Protection
           Act 2010 (PDPA).
         </p>
@@ -65,7 +65,7 @@ export default function PrivacyPage() {
           <h2 className="font-display text-lg font-medium text-gray-900">5. Your rights under the PDPA</h2>
           <p className="mt-2">
             You may request access to, correction of, or deletion of your personal data by
-            contacting us at [your support email]. We will respond within a reasonable time as
+            contacting us at Ruangkita.support@gmail.com. We will respond within a reasonable time as
             required by the PDPA.
           </p>
         </section>
@@ -90,7 +90,7 @@ export default function PrivacyPage() {
         <section>
           <h2 className="font-display text-lg font-medium text-gray-900">8. Contact</h2>
           <p className="mt-2">
-            Questions about this policy or your data can be sent to [your support email].
+            Questions about this policy or your data can be sent to Ruangkita.support@gmail.com.
           </p>
         </section>
 

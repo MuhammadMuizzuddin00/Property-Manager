@@ -9,12 +9,12 @@ export default function TermsPage() {
         ← Back
       </Link>
       <h1 className="font-display mt-4 text-3xl font-medium text-gray-900">Terms of Service</h1>
-      <p className="mt-2 text-sm text-gray-500">Last updated: [insert date]</p>
+      <p className="mt-2 text-sm text-gray-500">Last updated: 12 September 2026</p>
 
       <div className="mt-8 space-y-6 text-sm leading-relaxed text-gray-700">
         <p>
           These Terms of Service (&quot;Terms&quot;) govern your access to and use of PropMan
-          (&quot;Service&quot;), operated by [Your Company Name / your name] (&quot;we&quot;,
+          (&quot;Service&quot;), operated by Ruang Kita (&quot;we&quot;,
           &quot;us&quot;). By creating an account or using the Service, you agree to these Terms.
         </p>
 
@@ -84,7 +84,7 @@ export default function TermsPage() {
         <section>
           <h2 className="font-display text-lg font-medium text-gray-900">8. Contact</h2>
           <p className="mt-2">
-            Questions about these Terms can be sent to [your support email].
+            Questions about these Terms can be sent to Ruangkita.support@gmail.com.
           </p>
         </section>
 
