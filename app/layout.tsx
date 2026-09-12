@@ -10,7 +10,7 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
-  title: "PropMan — Property Management",
+  title: "Ruang Kita — Property Management",
   description: "Track tenants, rent, and maintenance across your properties.",
 };
 

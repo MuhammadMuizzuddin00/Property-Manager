@@ -49,7 +49,7 @@ export default function Home() {
           <div className="flex h-7 w-7 items-center justify-center rounded-md bg-brand-600">
             <Building2 size={15} className="text-white" />
           </div>
-          <span className="font-display text-lg font-medium text-gray-900">PropMan</span>
+          <span className="font-display text-lg font-medium text-gray-900">Ruang Kita</span>
         </div>
         <Link href="/sign-in" className="text-sm text-gray-600 hover:text-gray-900">
           Log in
@@ -63,7 +63,7 @@ export default function Home() {
             Every property, tenant, and ringgit — in one place.
           </h1>
           <p className="mt-5 max-w-md text-gray-600">
-            PropMan helps landlords and property managers in Malaysia track units, collect rent,
+            Ruang Kita helps landlords and property managers in Malaysia track units, collect rent,
             and handle maintenance — without a spreadsheet.
           </p>
           <div className="mt-7 flex flex-wrap gap-3">
@@ -81,7 +81,7 @@ export default function Home() {
             </Link>
           </div>
           <p className="mt-4 text-sm text-gray-400">
-            Renting from a landlord who uses PropMan?{" "}
+            Renting from a landlord who uses Ruang Kita?{" "}
             <Link href="/portal" className="text-brand-600 hover:underline">
               Go to your tenant portal
             </Link>

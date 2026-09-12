@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export const metadata = { title: "Terms of Service — PropMan" };
+export const metadata = { title: "Terms of Service — Ruang Kita" };
 
 export default function TermsPage() {
   return (
@@ -13,8 +13,8 @@ export default function TermsPage() {
 
       <div className="mt-8 space-y-6 text-sm leading-relaxed text-gray-700">
         <p>
-          These Terms of Service (&quot;Terms&quot;) govern your access to and use of PropMan
-          (&quot;Service&quot;), operated by Ruang Kita (&quot;we&quot;,
+          These Terms of Service (&quot;Terms&quot;) govern your access to and use of Ruang Kita
+          (&quot;Service&quot;, &quot;we&quot;,
           &quot;us&quot;). By creating an account or using the Service, you agree to these Terms.
         </p>
 

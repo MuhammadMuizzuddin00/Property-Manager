@@ -5,7 +5,7 @@ const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KE
 // From address must be on a domain you've verified in Resend. Until you do
 // that, Resend's own onboarding@resend.dev sender works for testing (only
 // deliverable to the email you signed up to Resend with).
-const FROM_ADDRESS = process.env.EMAIL_FROM ?? "PropMan <onboarding@resend.dev>";
+const FROM_ADDRESS = process.env.EMAIL_FROM ?? "Ruang Kita <onboarding@resend.dev>";
 
 async function sendEmail(to: string, subject: string, html: string) {
   if (!resend) {

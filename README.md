@@ -1,4 +1,4 @@
-# PropMan — Property Management SaaS (Starter)
+# Ruang Kita — Property Management SaaS (Starter)
 
 A **fully runnable** Next.js + TypeScript + Prisma + Clerk + Stripe starter.
 Two portals: a staff dashboard (landlords/managers) and a tenant portal,

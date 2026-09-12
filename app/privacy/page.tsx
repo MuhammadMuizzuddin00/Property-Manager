@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-export const metadata = { title: "Privacy Policy — PropMan" };
+export const metadata = { title: "Privacy Policy — Ruang Kita" };
 
 export default function PrivacyPage() {
   return (
@@ -13,7 +13,7 @@ export default function PrivacyPage() {
 
       <div className="mt-8 space-y-6 text-sm leading-relaxed text-gray-700">
         <p>
-          This Privacy Policy explains how PropMan, operated by Ruang Kita (&quot;we&quot;, &quot;us&quot;), collects,
+          This Privacy Policy explains how Ruang Kita (&quot;we&quot;, &quot;us&quot;) collects,
           uses, and protects personal data, in line with Malaysia&apos;s Personal Data Protection
           Act 2010 (PDPA).
         </p>

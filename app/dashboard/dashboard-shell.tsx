@@ -13,7 +13,7 @@ function SidebarContent({ onNavigate, isAdmin }: { onNavigate?: () => void; isAd
           <div className="flex h-7 w-7 items-center justify-center rounded-md bg-brand-600">
             <Home size={15} className="text-white" />
           </div>
-          <span className="font-display text-lg font-medium text-gray-900">PropMan</span>
+          <span className="font-display text-lg font-medium text-gray-900">Ruang Kita</span>
         </div>
         <SidebarNav onNavigate={onNavigate} isAdmin={isAdmin} />
       </div>
@@ -43,7 +43,7 @@ export default function DashboardShell({
           <div className="flex h-7 w-7 items-center justify-center rounded-md bg-brand-600">
             <Home size={15} className="text-white" />
           </div>
-          <span className="font-display text-lg font-medium text-gray-900">PropMan</span>
+          <span className="font-display text-lg font-medium text-gray-900">Ruang Kita</span>
         </div>
         <div className="flex items-center gap-1">
           <UserButton afterSignOutUrl="/" />
