@@ -5,16 +5,17 @@ export const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: "2024-06-20",
 });
 
-// Each plan's property limit and matching Stripe Price. Adjust prices to
-// your model. Create matching Prices in the Stripe Dashboard and paste the
-// IDs below. NOTE: subscriptionTier is now driven by what the org actually
-// subscribes to (via Stripe Checkout + webhook) — maxProperties here is
-// only used to ENFORCE a limit, not to auto-pick a tier by property count.
+// Each plan's property limit and matching Stripe Price. The `name` field
+// here is an internal key used by checkout/webhook/enforcement logic — it
+// must stay as FREE / STARTER / GROWTH / SCALE. The customer-facing display
+// names (Free / Basic / Standard / Premium) live separately in each page's
+// own PLANS array (app/dashboard/billing/page.tsx and app/page.tsx) — never
+// rename the `name` field below to match those display labels.
 export const TIERS = [
   { name: "FREE", maxProperties: 3, priceId: null },
-  { name: "Basic", maxProperties: 10, priceId: "price_1UEi46P1LVFMTEThz8MAD37S" },
-  { name: "Standard", maxProperties: 50, priceId: "price_1UEi3dP1LVFMTEThmM2weIqB" },
-  { name: "Premium", maxProperties: Infinity, priceId: "price_1UEhsaP1LVFMTETh6Tw2XQ5G" },
+  { name: "STARTER", maxProperties: 10, priceId: "price_1UEi46P1LVFMTEThz8MAD37S" },
+  { name: "GROWTH", maxProperties: 50, priceId: "price_1UEi3dP1LVFMTEThmM2weIqB" },
+  { name: "SCALE", maxProperties: Infinity, priceId: "price_1UEhsaP1LVFMTETh6Tw2XQ5G" },
 ] as const;
 
 export function tierForPropertyCount(count: number) {
