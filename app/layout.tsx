@@ -10,8 +10,29 @@ const fraunces = Fraunces({
 });
 
 export const metadata: Metadata = {
-  title: "Ruang Kita — Property Management",
-  description: "Track tenants, rent, and maintenance across your properties.",
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? "http://localhost:3000"),
+  title: "Ruang Kita — Property Management for Malaysian Landlords",
+  description:
+    "Track tenants, collect rent, and handle maintenance requests for every property you manage — built for landlords and property managers in Malaysia.",
+  keywords: [
+    "property management Malaysia",
+    "landlord software",
+    "rent tracking",
+    "tenant management",
+    "maintenance requests",
+  ],
+  openGraph: {
+    title: "Ruang Kita — Property Management for Malaysian Landlords",
+    description:
+      "Track tenants, collect rent, and handle maintenance requests for every property you manage.",
+    type: "website",
+    locale: "en_MY",
+  },
+  twitter: {
+    card: "summary",
+    title: "Ruang Kita — Property Management",
+    description: "Track tenants, collect rent, and handle maintenance requests.",
+  },
 };
 
 export default function RootLayout({

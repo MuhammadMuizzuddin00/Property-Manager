@@ -21,7 +21,9 @@
     "zod": "^3.23.8",
     "resend": "^4.0.0",
     "recharts": "^2.12.7",
-    "lucide-react": "^0.460.0"
+    "lucide-react": "^0.460.0",
+    "@sentry/nextjs": "^8.42.0",
+    "@vercel/blob": "^0.27.0"
   },
   "devDependencies": {
     "prisma": "^5.20.0",

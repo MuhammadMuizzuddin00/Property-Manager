@@ -201,6 +201,36 @@ Run `npx prisma db push` after pulling this change (see the note on `db
 push` vs `migrate dev` further down — this project's migration history has
 drifted from the actual database, so `db push` is the safer command here).
 
+## Photo uploads for maintenance requests
+
+Tenants (and staff, if you build a create-form for them later) can attach
+photos when filing a maintenance request. Uploads go through
+`POST /api/upload` to **Vercel Blob** and the returned public URL is stored
+in `MaintenanceRequest.photoUrls`.
+
+⚠️ **Requires setup**: add the "Blob" storage integration to your Vercel
+project (Storage tab → Create → Blob) — this auto-generates a
+`BLOB_READ_WRITE_TOKEN` env var, no manual key copying needed. Without it,
+uploads will fail with a 500 error.
+
+## Error monitoring (Sentry)
+
+`sentry.client.config.ts` / `sentry.server.config.ts` / `sentry.edge.config.ts`
+report runtime errors to Sentry so you find out about production bugs
+before a customer complains. Sign up free at sentry.io, create a project,
+grab the DSN, and set `NEXT_PUBLIC_SENTRY_DSN` in your env. `SENTRY_ORG` /
+`SENTRY_PROJECT` are optional — they only improve stack traces via source
+map upload during build. Without any of these set, the app runs completely
+normally — errors just go unreported.
+
+## Favicon & SEO
+
+`app/icon.svg` is auto-detected by Next.js as the site favicon. Metadata in
+`app/layout.tsx` includes Open Graph and Twitter card tags for nicer link
+previews, plus `app/robots.ts` and `app/sitemap.ts` for search engines —
+the dashboard/portal/admin routes are deliberately excluded from indexing
+since they're behind auth anyway.
+
 ## Testing Stripe webhooks locally
 
 Stripe needs a public URL to send webhook events to, which `localhost`

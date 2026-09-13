@@ -9,6 +9,7 @@ type Request = {
   description: string;
   status: "OPEN" | "IN_PROGRESS" | "DONE" | "CANCELLED";
   submittedBy: "STAFF" | "TENANT";
+  photoUrls: string[];
   createdAt: string;
   unit: { label: string; property: { name: string } };
   tenant: { fullName: string } | null;
@@ -118,6 +119,20 @@ export default function MaintenancePage() {
                         {new Date(r.createdAt).toLocaleDateString()}
                       </div>
                       <p className="mt-2 text-sm text-gray-600">{r.description}</p>
+                      {r.photoUrls?.length > 0 && (
+                        <div className="mt-2 flex flex-wrap gap-2">
+                          {r.photoUrls.map((url) => (
+                            // eslint-disable-next-line @next/next/no-img-element
+                            <a key={url} href={url} target="_blank" rel="noopener noreferrer">
+                              <img
+                                src={url}
+                                alt="Maintenance issue photo"
+                                className="h-16 w-16 rounded-lg border border-gray-200 object-cover hover:opacity-80"
+                              />
+                            </a>
+                          ))}
+                        </div>
+                      )}
                     </div>
                     <span
                       className={`flex shrink-0 items-center gap-1 rounded-full px-2 py-0.5 text-xs whitespace-nowrap ${STATUS_STYLES[r.status]}`}
